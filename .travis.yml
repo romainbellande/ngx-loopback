@@ -3,6 +3,9 @@ node_js:
 - v6
 sudo: required
 dist: trusty
+addons:
+  ssh_known_hosts:
+  - 46.101.53.213
 before_install:
 # ssh
 - openssl aes-256-cbc -K $encrypted_5fd8db5922e5_key -iv $encrypted_5fd8db5922e5_iv -in deploy_key.enc -out deploy_key -d
