@@ -1,0 +1,29 @@
+language: node_js
+node_js:
+- v6
+sudo: required
+dist: trusty
+before_install:
+- sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
+- echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+- sudo apt-get update -qq
+- sudo apt-get install -y -qq yarn
+- export CHROME_BIN=/usr/bin/google-chrome
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- sudo apt-get update
+- sudo apt-get install -y libappindicator1 fonts-liberation
+- wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+- sudo dpkg -i google-chrome*.deb
+cache:
+  yarn: true
+  directories:
+  - node_modules
+  - angular/node_modules
+install: "./install.sh"
+after_script:
+- npm run coveralls
+deploy:
+  provider: heroku
+  api_key:
+    secure: j4tSOHOaR/oIjJIq6eN+Dub2/tf1suOEPEeZLzocF30WaiFefCok0GbgQyHCy+rWsWJacZoJQMBeI9dvbAINMesPQMLOQlIeVe6BV8TQOfzjm3VViP7Ifc0xvalWSbAFHNbTjknz8sOCv5Id54+wtO8ikCxNlpR941zNYS248GtrjihhjlzHYya60eacUkM7szV7M+QbvtWMVdtCJ7NUKclBA+v+DnHZCBe6QMhZLNcjMma3dZoE8jPQ52r5emSun90/bpcQypzGl7GTdGWQf8LB+vOhntYBvzzqrKXIdlYaqrwjMwzN+DbkBtRtAOR4T8Gg3BJR+KtHaJK7HcTKPOEb8ZUiEBWyt8AOAgAhoj9cSygIti5OntAPEKrwPAUKOXPiIkBbrOl4ST0hZMgp/oZPm9jbekOfq2qEKeqWuJBRo8wK9g8baFvs1qFEy72kx5cCIVfP52BjWvohIJmYE/KqmkR68LxbG/wtSPAyS3DhSMXDX30Cql7DeWXUXcBrbW6koBZJnFxI+/nVITRf+k6dCwIbVL7mnKCjFbDOA0luVtRBKIhbQ48A884jvRU8bPVLbc7YqY9wsKJ6MAC6hKhFHEWns5MqpTgwOdBTMuWxRm+4xuA8q1py95jfDVGx6JwfOkge0wKhhjd3bEgjG/jkCB617Zq/zlzFezVBSRk=
