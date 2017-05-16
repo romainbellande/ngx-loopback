@@ -11,7 +11,8 @@
     "dev": "concurrently 'mongod' 'node .'",
     "angular": "npm start --prefix angular",
     "test": "npm test --prefix angular",
-    "coveralls": "cat ./angular/coverage/lcov.info | coveralls"
+    "coveralls": "cat ./angular/coverage/lcov.info | coveralls",
+    "dist": "npm run dist --prefix angular"
   },
   "dependencies": {
     "compression": "^1.0.3",

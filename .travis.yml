@@ -31,8 +31,7 @@ cache:
   - angular/node_modules
 install:
   - bash ./scripts/install.sh
-after_script:
-  - npm run coveralls
 after_success:
+  - npm run coveralls
   - bash ./scripts/build.sh
   - bash ./scripts/deploy.sh
