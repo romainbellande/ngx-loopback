@@ -19,5 +19,5 @@ npm-debug.log
 
 deploy_key.enc
 google-chrome-stable_current_amd64.deb
-angular
-scripts
+angular/*
+scripts/*

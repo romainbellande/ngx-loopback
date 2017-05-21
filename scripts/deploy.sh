@@ -2,6 +2,9 @@
 eval "$(ssh-agent -s)" #start the ssh agent
 rm .gitignore
 mv .travis-gitignore .gitignore
+git rm -rf angular
+git rm deploy_key.enc
+git rm -rf scripts
 git add .
 git clean -xdf
 slc build --commit --onto deploy --install
