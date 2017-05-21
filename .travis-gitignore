@@ -15,10 +15,9 @@
 .project
 .strong-pm
 coverage
-node_modules
 npm-debug.log
 
 deploy_key.enc
 google-chrome-stable_current_amd64.deb
-/angular
-/scripts
+angular
+scripts
