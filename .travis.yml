@@ -3,12 +3,13 @@ node_js:
 - v6
 sudo: required
 dist: trusty
+cache: yarn
 addons:
   ssh_known_hosts:
-  - 46.101.53.213
+  - 46.101.55.92
 before_install:
 #loopback
-- npm install -g strongloop
+- yarn global add strongloop
 # ssh
 - openssl aes-256-cbc -K $encrypted_5fd8db5922e5_key -iv $encrypted_5fd8db5922e5_iv -in deploy_key.enc -out deploy_key -d
 - chmod 600 deploy_key
@@ -26,11 +27,6 @@ before_install:
 - sudo apt-get install -y libappindicator1 fonts-liberation
 - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 - sudo dpkg -i google-chrome*.deb
-cache:
-  yarn: true
-  directories:
-  - node_modules
-  - angular/node_modules
 install:
   - bash ./scripts/install.sh
 after_success:
